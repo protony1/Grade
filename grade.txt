@@ -1,16 +1,25 @@
 ﻿*** Settings ***
 Library    Selenium2Library
 Suite Setup    Go to page
+Suite Teardown    Close browser
 
 *** Variables ***
 
 *** Testcases ***
-Check Grade
-    Check Grade    60
-    User should see result    Your Grade is C 
-
+Rule of Check Grade
+    [Template]    flow of Check Grade
+    60    C
+    85    A
+    77    B
+    51    D
+    10    F
 
 *** Keywords ***
+flow of Check Grade
+    [Arguments]    ${score}    ${result}
+    Check Grade    ${score}
+    User should see result    Your grade is ${result}
+    Navigate to page
 
 Go to page
     Open Browser    http://clockupstudio.com/demo/gradejs/
@@ -26,4 +35,4 @@ Check Grade
 
 User should see result
     [Arguments]    ${textshow}
-    Wait Until Page Contains    ${textshow}
+    Wait Until Page Contains    ${textshow}    3
