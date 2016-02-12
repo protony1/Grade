@@ -1,0 +1,29 @@
+﻿*** Settings ***
+Library    Selenium2Library
+Suite Setup    Go to page
+
+*** Variables ***
+
+*** Testcases ***
+Check Grade
+    Check Grade    60
+    User should see result    Your Grade is C 
+
+
+*** Keywords ***
+
+Go to page
+    Open Browser    http://clockupstudio.com/demo/gradejs/
+    Maximize Browser Window
+
+Navigate to page
+    Go to    http://clockupstudio.com/demo/gradejs/
+
+Check Grade
+    [Arguments]    ${score}
+    Input Text    score    ${score}
+    Click Button    submit
+
+User should see result
+    [Arguments]    ${textshow}
+    Wait Until Page Contains    ${textshow}
