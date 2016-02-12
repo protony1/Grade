@@ -8,11 +8,11 @@ Suite Teardown    Close browser
 *** Testcases ***
 Rule of Check Grade
     [Template]    flow of Check Grade
-    60    C
+    #60    C
     85    A
     77    B
-    51    D
-    10    F
+    #51    D
+    #10    F
 
 *** Keywords ***
 flow of Check Grade
